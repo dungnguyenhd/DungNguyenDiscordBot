@@ -23,7 +23,6 @@
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
-    "erela.js": "^2.4.0",
-    "ffmpeg-static": "^4.4.1"
+    "erela.js": "^2.4.0"
   }
 }
