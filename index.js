@@ -56,12 +56,12 @@ client.manager = new Manager({
 
 // Emitted whenever a node connects
 client.manager.on("nodeConnect", node => {
-    console.log(`Node "${node.options.identifier}" connected.`)
+    console.log(`Node "${node.options.identifier}" kết nối thành công.`)
 })
 
 // Emitted whenever a node encountered an error
 client.manager.on("nodeError", (node, error) => {
-    console.log(`Node "${node.options.identifier}" encountered an error: ${error.message}.`)
+    console.log(`Node "${node.options.identifier}" lỗi mẹ rồi: ${error.message}.`)
 })
 
 // THIS IS REQUIRED. Send raw events to Erela.js
@@ -82,7 +82,7 @@ fs.readdir('./commands/', (err, files) => {
 })
 
 client.on('ready', () => {
-  console.log(`${client.user.tag} is ready to play music.`)
+  console.log(`${client.user.tag} you wanna play lét play.`)
 })
 
 client.on('messageCreate', async message => {
@@ -100,7 +100,7 @@ client.on('messageCreate', async message => {
     cmd.run(client, message, args)
   } catch (e) {
     console.error(e)
-    message.channel.send(`${client.emotes.error} | Error: \`${e}\``)
+    message.channel.send(`${client.emotes.error} | Lỗi: \`${e}\``)
   }
 })
 
@@ -129,12 +129,12 @@ client.distube
     )
   )
   .on('error', (channel, e) => {
-    if (channel) channel.send(`${client.emotes.error} | An error encountered: ${e.toString().slice(0, 1974)}`)
+    if (channel) channel.send(`${client.emotes.error} | Lỗi mẹ rồi: ${e.toString().slice(0, 1974)}`)
     else console.error(e)
   })
-  .on('empty', channel => channel.send('Voice channel is empty! Leaving the channel...'))
+  .on('empty', channel => channel.send('Không ai trong talk cả! Rời khỏi talk...'))
   .on('searchNoResult', (message, query) =>
-    message.channel.send(`${client.emotes.error} | No result found for \`${query}\`!`)
+    message.channel.send(`${client.emotes.error} Không tìm thấy kết quả \`${query}\`!`)
   )
   .on('finish', queue => queue.textChannel.send('Hết !'))
 // // DisTubeOptions.searchSongs = true
@@ -155,7 +155,3 @@ client.distube
 // .on("searchDone", () => {})
 
 client.login(process.env.TOKEN)
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on port ${process.env.PORT || 3000}`);
-});
