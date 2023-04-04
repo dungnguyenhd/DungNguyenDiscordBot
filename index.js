@@ -1,4 +1,5 @@
-const { DisTube } = require('distube')
+require('dotenv').config();
+const { DisTube } = require('distube');
 const { Manager } = require("erela.js");
 const nodes = [
   {
@@ -24,7 +25,6 @@ const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 
-client.config = require('./config.json')
 client.distube = new DisTube(client, {
   leaveOnStop: false,
   emitNewSongOnly: true,
@@ -154,4 +154,4 @@ client.distube
 // )
 // .on("searchDone", () => {})
 
-client.login(config.token)
+client.login(process.env.TOKEN)
