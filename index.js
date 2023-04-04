@@ -154,4 +154,4 @@ client.distube
 // )
 // .on("searchDone", () => {})
 
-client.login('MTA0ODgxNDA5NDYwNzcxNjQzMg.GgkHLG.God8K5YlqkYaloz60XwRtjqoOeQ4eEJ7tqmMAw')
+client.login(config.token)
