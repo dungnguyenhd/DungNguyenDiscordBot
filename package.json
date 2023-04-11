@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "DungNguyen",
   "license": "ISC",
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm install"
+  },
   "dependencies": {
     "@discordjs/builders": "^1.4.0",
     "@discordjs/opus": "github:discordjs/opus",
