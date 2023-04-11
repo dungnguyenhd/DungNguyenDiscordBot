@@ -9,7 +9,6 @@ const nodes = [
     secure : true
   }
 ];
-client.login(process.env.TOKEN)
 
 const Discord = require('discord.js')
 const client = new Discord.Client({
@@ -81,6 +80,8 @@ fs.readdir('./commands/', (err, files) => {
     if (cmd.aliases) cmd.aliases.forEach(alias => client.aliases.set(alias, cmd.name))
   })
 })
+
+client.login(process.env.TOKEN)
 
 client.on('ready', () => {
   console.log(`${client.user.tag} you wanna play lét play. ${process.env.TOKEN}`)
