@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production"
   },
   "author": "DungNguyen",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "erela.js": "^2.4.0"
   },
   "devDependencies": {
