@@ -9,6 +9,7 @@ const nodes = [
     secure : true
   }
 ];
+client.login(process.env.TOKEN)
 
 const Discord = require('discord.js')
 const client = new Discord.Client({
@@ -153,4 +154,3 @@ client.distube
 //     )
 // )
 // .on("searchDone", () => {})
-await client.login(process.env.TOKEN)
