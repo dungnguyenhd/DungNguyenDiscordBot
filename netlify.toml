@@ -1,2 +1,2 @@
 [build]
-  command = "node ."
+  command = "npm start"
