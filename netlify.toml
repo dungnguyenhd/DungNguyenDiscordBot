@@ -1,5 +1,4 @@
 [build]
   publish = "dist"
-
-[dev]
-  command = "npm start"
+[start]
+  command = "node ."
