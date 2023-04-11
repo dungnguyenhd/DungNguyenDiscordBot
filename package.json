@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install",
-    "start": "npm start"
+    "start": "npm start" 
   },
   "author": "DungNguyen",
   "license": "ISC",
