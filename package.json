@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --name my-bot",
-    "build": ""
+    "start": "node index.js",
+    "build": "npm install",
+    "postinstall": "node index.js"
   },
   "author": "DungNguyen",
   "license": "ISC",
