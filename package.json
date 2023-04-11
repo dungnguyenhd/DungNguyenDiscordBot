@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "postdeploy": "node ."
+    "start": "node ."
   },
   "author": "DungNguyen",
   "license": "ISC",
