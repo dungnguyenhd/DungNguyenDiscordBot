@@ -1,2 +1,2 @@
 [build]
-  command = "netlify env:import && node ."
+  command = "node ."
