@@ -9,5 +9,11 @@ module.exports = {
     filename: 'index.js'
   },
   target: 'node',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   externals: [nodeExternals()],
+  devServer: {
+    port: 8000,
+  },
 }
