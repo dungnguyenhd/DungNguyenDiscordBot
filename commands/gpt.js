@@ -1,7 +1,6 @@
 module.exports = {
   name: 'ask',
   aliases: ['chat'],
-  inVoiceChannel: false,
   run: async (client, message, args) => {
     const string = args.join(' ')
     if (!string) return message.channel.send(`${client.emotes.error} | Vui lòng nhập từ khóa tìm kiếm.`)
