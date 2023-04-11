@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "build": "npm install",
-    "postinstall": "node index.js"
+    "start": "node index.js"
   },
   "author": "DungNguyen",
   "license": "ISC",
