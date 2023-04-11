@@ -1,2 +1,4 @@
-[build]"
-    functions = "functions"
+[build]
+    command = "npm run build"
+[start]
+    command = "node index.js"
