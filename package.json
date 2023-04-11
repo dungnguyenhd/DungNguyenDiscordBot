@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.2"
+    "webpack-dev-server": "^4.13.2",
+    "webpack-node-externals": "^3.0.0"
   }
 }
