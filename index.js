@@ -83,7 +83,6 @@ fs.readdir('./commands/', (err, files) => {
 
 client.on('ready', () => {
   console.log(`${client.user.tag} you wanna play lét play. ${process.env.TOKEN}`)
-  client.login(process.env.TOKEN)
 })
 
 client.on('messageCreate', async message => {
@@ -154,3 +153,4 @@ client.distube
 //     )
 // )
 // .on("searchDone", () => {})
+await client.login(process.env.TOKEN)
