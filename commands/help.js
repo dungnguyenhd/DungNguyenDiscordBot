@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 module.exports = {
   name: 'help',
-  aliases: ['h', 'cmd', 'command'],
+  aliases: ['h', 'cmd', 'command', 'cuu'],
   run: async (client, message) => {
     message.channel.send({
       embeds: [
