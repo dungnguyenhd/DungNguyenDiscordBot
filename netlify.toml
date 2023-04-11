@@ -1,3 +1,2 @@
 [build]
-  command = "console.log(process.env.TOKEN)"
   command = "node ."
