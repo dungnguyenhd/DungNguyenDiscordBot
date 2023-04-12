@@ -7,8 +7,7 @@
   "license": "ISC",
   "scripts": {
     "start": "node index.js",
-    "build": "npm install",
-    "poststart": "node index.js"
+    "build": "npm install"
   },
   "dependencies": {
     "@discordjs/builders": "^1.4.0",
