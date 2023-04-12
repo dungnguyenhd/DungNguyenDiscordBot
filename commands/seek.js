@@ -1,15 +1,35 @@
+const { createAudioPlayer, createAudioResource } = require('@discordjs/voice');
+const { getAudioUrl } = require('google-tts-api');
+const { joinVoiceChannel } = require('@discordjs/voice');
+
 module.exports = {
-  name: 'seek',
+  name: 'speak',
   inVoiceChannel: true,
   run: async (client, message, args) => {
-    const queue = client.distube.getQueue(message)
-    if (!queue) return message.channel.send(`${client.emotes.error} | There is nothing in the queue right now!`)
-    if (!args[0]) {
-      return message.channel.send(`${client.emotes.error} | Please provide position (in seconds) to seek!`)
+    const string = args.join(' ');
+
+    if (!message.member.voice.channel) {
+      return message.reply('You need to join a voice channel first!');
     }
-    const time = Number(args[0])
-    if (isNaN(time)) return message.channel.send(`${client.emotes.error} | Please enter a valid number!`)
-    queue.seek(time)
-    message.channel.send(`Seeked to ${time}!`)
-  }
+
+    const connection = joinVoiceChannel({
+      channelId: message.member.voice.channel.id,
+      guildId: message.member.voice.channel.guild.id,
+      adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
+    });
+
+    const audioURL = getAudioUrl(string, {
+      lang: 'vi',
+      slow: false,
+      host: 'https://translate.google.com',
+      timeout: 10000,
+    });
+
+    const player = createAudioPlayer();
+    const resource = createAudioResource(audioURL);
+    player.play(resource);
+
+    // Subscribe the connection to the audio player (will play audio on the voice connection)
+    connection.subscribe(player);
+  },
 }
