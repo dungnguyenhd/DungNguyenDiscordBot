@@ -6,7 +6,7 @@ module.exports = {
     const string = args.join(' ');
     const spl = string.split('&');
     if (!string) return message.channel.send(`${client.emotes.error} | Vui lòng nhập từ khóa tìm kiếm.`)
-    let size = spl[2] ? spl[2] : "720x720";
+    let size = spl[2] ? spl[2] : "1024x1024";
 
     const axios = require("axios");
 
