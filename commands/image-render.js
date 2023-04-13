@@ -18,10 +18,11 @@ module.exports = {
 
     const options = {
       method: 'POST',
-      url: 'https://api.openai.com/v1/images/generations',
+      url: 'https://openai80.p.rapidapi.com/images/generations',
       headers: {
         'content-type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'X-RapidAPI-Key': '4aaa27d4c0mshb8183cf05fa5e3ap1d73b9jsn2a8de64c111a',
+        'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
       },
       data: data
     };
