@@ -21,11 +21,10 @@ module.exports = {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'https://openai80.p.rapidapi.com/chat/completions',
+        url: 'https://api.openai.com/v1/chat/completions',
         headers: {
           'content-type': 'application/json',
-          'X-RapidAPI-Key': '161c0f8a5emsh6f0acc0af1ec2b6p11e379jsn7cd7c0697694',
-          'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
+          'Authorization': 'Bearer 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'
         },
         data: data
       };
