@@ -139,18 +139,46 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
         `Welcome back <@${newPresence.userId}>`,
         `Hello <@${newPresence.userId}> bro`,
       ];
+      if(newPresence.userId === '716185747023069215') {
+        string = [
+          `<@${newPresence.userId}> đi nấu cơm`,
+          `<@${newPresence.userId}> đi phơi quần áo`,
+          `<@${newPresence.userId}> đang nhớ Sơn`,
+          `Welcome back <@${newPresence.userId}>`,
+          `Hello <@${newPresence.userId}> bro`,
+        ];
+      }
+
+      if(newPresence.userId === '356250974647746562') {
+        string = [
+          `<@${newPresence.userId}> đang online`,
+          `<@${newPresence.userId}> đang nhớ Linh`,
+          `<@${newPresence.userId}> đang nhớ Trưởng`,
+          `<@${newPresence.userId}> chào mừng ngài trở lại `,
+        ];
+      }
+
       const randomIndex = Math.floor(Math.random() * string.length);
       const randomString = string[randomIndex];
       channel.send(randomString);
     }
 
-    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614') {
+    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities !== 'Custom Status' && oldPresence.activities !== newPresence.activities) {
       const string = [
         `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
         `<@${newPresence.userId}> đang chơi mảnh`,
         `<@${newPresence.userId}> tìm đồng đội chơi ${newPresence.activities}`,
         `<@${newPresence.userId}> cho chơi với`,
       ];
+
+      if(newPresence.userId === '716185747023069215') {
+        string = [
+          `<@${newPresence.userId}> đi nấu cơm đi`,
+          `<@${newPresence.userId}> đi phơi quần áo đi`,
+          `<@${newPresence.userId}> đi quét nhà đi`,
+        ];
+      }
+
       const randomIndex = Math.floor(Math.random() * string.length);
       const randomString = string[randomIndex];
       channel.send(randomString);
