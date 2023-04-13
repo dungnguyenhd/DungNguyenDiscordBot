@@ -1,11 +1,11 @@
 module.exports = {
   name: 'stop',
-  aliases: ['disconnect', 'leave'],
+  aliases: ['disconnect', 'leave', 's'],
   inVoiceChannel: true,
   run: async (client, message) => {
     const queue = client.distube.getQueue(message)
-    if (!queue) return message.channel.send(`${client.emotes.error} | There is nothing in the queue right now!`)
+    if (!queue) return message.channel.send(`${client.emotes.error} | Không có bài hát nào đang phát!`)
     queue.stop()
-    message.channel.send(`${client.emotes.success} | Stopped!`)
+    message.channel.send(`${client.emotes.success} | Dừng!`)
   }
 }

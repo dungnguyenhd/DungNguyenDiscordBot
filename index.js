@@ -1,12 +1,13 @@
 require('dotenv').config();
+const { ActivityType } = require('discord.js');
 const { DisTube } = require('distube');
 const { Manager } = require("erela.js");
 const nodes = [
   {
-    host : "node1.kartadharta.xyz",
-    password : "kdlavalink",
-    port : 443,
-    secure : true
+    host: "node1.kartadharta.xyz",
+    password: "kdlavalink",
+    port: 443,
+    secure: true
   }
 ];
 
@@ -16,7 +17,8 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.Guilds,
     Discord.GatewayIntentBits.GuildMessages,
     Discord.GatewayIntentBits.GuildVoiceStates,
-    Discord.GatewayIntentBits.MessageContent
+    Discord.GatewayIntentBits.MessageContent,
+    Discord.GatewayIntentBits.GuildPresences
   ]
 })
 const fs = require('fs')
@@ -56,12 +58,12 @@ client.manager = new Manager({
 
 // Emitted whenever a node connects
 client.manager.on("nodeConnect", node => {
-    console.log(`Node "${node.options.identifier}" kết nối thành công.`)
+  console.log(`Node "${node.options.identifier}" kết nối thành công.`)
 })
 
 // Emitted whenever a node encountered an error
 client.manager.on("nodeError", (node, error) => {
-    console.log(`Node "${node.options.identifier}" lỗi mẹ rồi: ${error.message}.`)
+  console.log(`Node "${node.options.identifier}" lỗi mẹ rồi: ${error.message}.`)
 })
 
 // THIS IS REQUIRED. Send raw events to Erela.js
@@ -82,8 +84,83 @@ fs.readdir('./commands/', (err, files) => {
 })
 
 client.on('ready', () => {
-  console.log(`${client.user.tag} you wanna play lét play. ${process.env.TOKEN}`)
-})
+  console.log(`${client.user.tag} you wanna play lét play.`)
+
+  const options = [
+    {
+      type: ActivityType.Watching,
+      text: "master Dung Nguyen working",
+      status: "idle"
+    },
+    {
+      type: ActivityType.Listening,
+      text: "commands",
+      status: "online"
+    },
+    {
+      type: ActivityType.Playing,
+      text: "music for master",
+      status: "idle"
+    },
+    {
+      type: ActivityType.Competing,
+      text: "Ycomm Hanoi",
+      status: "dnd"
+    },
+    {
+      type: ActivityType.Streaming,
+      text: "update core system",
+      status: "dnd"
+    },
+  ];
+
+  setInterval(() => {
+    const option = Math.floor(Math.random() * options.length);
+    client.user.setPresence({
+      activities: [{
+        name: options[option].text,
+        type: options[option].type
+      }],
+      status: options[option].status
+    });
+  }, 10 * 10000);
+});
+
+client.on('presenceUpdate', async (oldPresence, newPresence) => {
+  try {
+    const guild = client.guilds.cache.get('797845913774981181');
+    const channel = guild.channels.cache.get('797845914324041769');
+
+    if (oldPresence.status === 'offline' && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+      const string = [
+        `<@${newPresence.userId}> đang online`,
+        `<@${newPresence.userId}> đang nhớ Linh`,
+        `<@${newPresence.userId}> đang nhớ Trưởng`,
+        `Welcome back <@${newPresence.userId}>`,
+        `Hello <@${newPresence.userId}> bro`,
+      ];
+      const randomIndex = Math.floor(Math.random() * string.length);
+      const randomString = string[randomIndex];
+      channel.send(randomString);
+    }
+
+    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614') {
+      const string = [
+        `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
+        `<@${newPresence.userId}> đang chơi mảnh`,
+        `<@${newPresence.userId}> tìm đồng đội chơi ${newPresence.activities}`,
+        `<@${newPresence.userId}> cho chơi với`,
+      ];
+      const randomIndex = Math.floor(Math.random() * string.length);
+      const randomString = string[randomIndex];
+      channel.send(randomString);
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 client.on('messageCreate', async message => {
   if (message.author.bot || !message.guild) return
@@ -105,14 +182,12 @@ client.on('messageCreate', async message => {
 })
 
 const status = queue =>
-  `Âm lượng: \`${queue.volume}%\` | Lọc: \`${queue.filters.names.join(', ') || 'Off'}\` | Lặp: \`${
-    queue.repeatMode ? (queue.repeatMode === 2 ? 'Hàng đợi' : 'This Song') : 'Off'
+  `Âm lượng: \`${queue.volume}%\` | Lọc: \`${queue.filters.names.join(', ') || 'Off'}\` | Lặp: \`${queue.repeatMode ? (queue.repeatMode === 2 ? 'Hàng đợi' : 'This Song') : 'Off'
   }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
 client.distube
   .on('playSong', (queue, song) =>
     queue.textChannel.send(
-      `${client.emotes.play} | Bật \`${song.name}\` - \`${song.formattedDuration}\`\nYêu cầu bởi ngài: ${
-        song.user
+      `${client.emotes.play} | Bật \`${song.name}\` - \`${song.formattedDuration}\`\nYêu cầu bởi ngài: ${song.user
       }\n${status(queue)}`
     )
   )
@@ -123,8 +198,7 @@ client.distube
   )
   .on('addList', (queue, playlist) =>
     queue.textChannel.send(
-      `${client.emotes.success} | Thêm \`${playlist.name}\` playlist (${
-        playlist.songs.length
+      `${client.emotes.success} | Thêm \`${playlist.name}\` playlist (${playlist.songs.length
       } songs) to queue\n${status(queue)}`
     )
   )
