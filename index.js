@@ -132,57 +132,53 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
     const channel = guild.channels.cache.get('797845914324041769');
 
     if (oldPresence.status === 'offline' && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-      const string = [
-        `<@${newPresence.userId}> đang online`,
-        `<@${newPresence.userId}> đang nhớ Linh`,
-        `<@${newPresence.userId}> đang nhớ Trưởng`,
-        `Welcome back <@${newPresence.userId}>`,
-        `Hello <@${newPresence.userId}> bro`,
-      ];
-      if(newPresence.userId === '716185747023069215') {
+      let string = [];
+      if (newPresence.userId === '716185747023069215') {
         string = [
-          `<@${newPresence.userId}> đi nấu cơm`,
-          `<@${newPresence.userId}> đi phơi quần áo`,
-          `<@${newPresence.userId}> đang nhớ Sơn`,
+          `Welcome back panther <@${newPresence.userId}> `,
+        ];
+        const randomIndex = Math.floor(Math.random() * string.length);
+        const randomString = string[randomIndex];
+        channel.send(randomString);
+      } else if (newPresence.userId === '356250974647746562') {
+        string = `Welcome back my dear boss <@${newPresence.userId}> `
+        channel.send(string);
+      } else {
+        const string = [
           `Welcome back <@${newPresence.userId}>`,
           `Hello <@${newPresence.userId}> bro`,
         ];
+        const randomIndex = Math.floor(Math.random() * string.length);
+        const randomString = string[randomIndex];
+        channel.send(randomString);
       }
-
-      if(newPresence.userId === '356250974647746562') {
-        string = [
-          `<@${newPresence.userId}> đang online`,
-          `<@${newPresence.userId}> đang nhớ Linh`,
-          `<@${newPresence.userId}> đang nhớ Trưởng`,
-          `<@${newPresence.userId}> chào mừng ngài trở lại `,
-        ];
-      }
-
-      const randomIndex = Math.floor(Math.random() * string.length);
-      const randomString = string[randomIndex];
-      channel.send(randomString);
     }
 
-    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities !== 'Custom Status' && oldPresence.activities !== newPresence.activities) {
-      const string = [
-        `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
-        `<@${newPresence.userId}> đang chơi mảnh`,
-        `<@${newPresence.userId}> tìm đồng đội chơi ${newPresence.activities}`,
-        `<@${newPresence.userId}> cho chơi với`,
-      ];
-
-      if(newPresence.userId === '716185747023069215') {
-        string = [
-          `<@${newPresence.userId}> đi nấu cơm đi`,
-          `<@${newPresence.userId}> đi phơi quần áo đi`,
-          `<@${newPresence.userId}> đi quét nhà đi`,
-        ];
-      }
-
-      const randomIndex = Math.floor(Math.random() * string.length);
-      const randomString = string[randomIndex];
-      channel.send(randomString);
-    }
+    // if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities !== 'Custom Status' && oldPresence.activities !== newPresence.activities) {
+    //   let string2 = [];
+    //   if (newPresence.userId === '716185747023069215') {
+    //     string2 = [
+    //       `<@${newPresence.userId}> đi nấu cơm đi`,
+    //       `<@${newPresence.userId}> đi phơi quần áo đi`,
+    //       `<@${newPresence.userId}> đi quét nhà đi`,
+    //       `<@${newPresence.userId}> đi học bài đi`,
+    //     ];
+    //     const randomIndex = Math.floor(Math.random() * string2.length);
+    //     const randomString = string2[randomIndex];
+    //     channel.send(randomString);
+    //   } else if (newPresence.userId === '356250974647746562'){
+    //     string = `Wish you have fun my dear boss <@${newPresence.userId}> `
+    //     channel.send(string);
+    //   } else {
+    //     string2 = [
+    //       `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
+    //       `<@${newPresence.userId}> cho chơi với`,
+    //     ];
+    //     const randomIndex = Math.floor(Math.random() * string2.length);
+    //     const randomString = string2[randomIndex];
+    //     channel.send(randomString);
+    //   }
+    // }
 
   } catch (error) {
     console.log(error);
