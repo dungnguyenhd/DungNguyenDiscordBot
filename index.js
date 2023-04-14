@@ -154,34 +154,34 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
     const guild = client.guilds.cache.get('797845913774981181');
     const channel = guild.channels.cache.get('797845914324041769');
 
-      if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-        let string = [];
-        if (newPresence.userId === '356250974647746562') {
-          string = `Welcome back my dear boss <@${newPresence.userId}> `
-          channel.send(string);
-        } else if (newPresence.userId === '797864861987766294') {
-          string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
-          channel.send(string);
-        } else {
-          const string = [
-            `Welcome back <@${newPresence.userId}>, have a nice day`,
-            `Hi <@${newPresence.userId}>, how are you doing today?`,
-            `<@${newPresence.userId}> good to see you!`,
-            `Bonjour <@${newPresence.userId}>`,
-            `<@${newPresence.userId}> konnichiwa `,
-            `Ahoy <@${newPresence.userId}>, matey! Avast ye! `,
-            `Waddup Brah <@${newPresence.userId}>? Welcome!`,
-            `Hola!!! <@${newPresence.userId}>`,
-            `Privyet <@${newPresence.userId}>`,
-            `Namaste <@${newPresence.userId}>`,
-            `<@${newPresence.userId}> Sawatdee khrap`
-          ];
-          const randomIndex = Math.floor(Math.random() * string.length);
-          const randomString = string[randomIndex];
-          channel.send(randomString);
-        }
+    if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+      let string;
+      if (newPresence.userId === '356250974647746562') {
+        string = `Welcome back my dear boss <@${newPresence.userId}> `
+        channel.send(string);
+      } else if (newPresence.userId === '797864861987766294') {
+        string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
+        channel.send(string);
+        // } else {
+        //   const string = [
+        //     `Welcome back <@${newPresence.userId}>, have a nice day`,
+        //     `Hi <@${newPresence.userId}>, how are you doing today?`,
+        //     `<@${newPresence.userId}> good to see you!`,
+        //     `Bonjour <@${newPresence.userId}>`,
+        //     `<@${newPresence.userId}> konnichiwa `,
+        //     `Ahoy <@${newPresence.userId}>, matey! Avast ye! `,
+        //     `Waddup Brah <@${newPresence.userId}>? Welcome!`,
+        //     `Hola!!! <@${newPresence.userId}>`,
+        //     `Privyet <@${newPresence.userId}>`,
+        //     `Namaste <@${newPresence.userId}>`,
+        //     `<@${newPresence.userId}> Sawatdee khrap`
+        //   ];
+        //   const randomIndex = Math.floor(Math.random() * string.length);
+        //   const randomString = string[randomIndex];
+        //   channel.send(randomString);
+        // }
       }
-
+    }
     if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
       let string2 = [];
       if (newPresence.userId === '716185747023069215') {
