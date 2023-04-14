@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { ActivityType } = require('discord.js');
+const cron = require('cron');
 const { DisTube } = require('distube');
 const { Manager } = require("erela.js");
 const nodes = [
@@ -85,6 +86,10 @@ fs.readdir('./commands/', (err, files) => {
 
 client.on('ready', () => {
   console.log(`${client.user.tag} you wanna play lét play.`)
+});
+
+client.once("ready", () => {
+  console.log(`Online as ${client.user.tag}`);
 
   const options = [
     {
@@ -124,6 +129,24 @@ client.on('ready', () => {
       status: options[option].status
     });
   }, 10 * 10000);
+
+  let scheduledMessage = new cron.CronJob('00 35 09 * * *', () => {
+    let now = new Date().getTime();
+    let countDownDate = new Date("Feb 2,2025 5:00:00").getTime();
+    let timeleft = countDownDate - now;
+
+    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+    const guild = client.guilds.cache.get('797845913774981181');
+    const channel = guild.channels.cache.get('797845914324041769');
+    channel.send(`Đếm ngày xa Linh: còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`);
+  });
+
+  // When you want to start it, use:
+  scheduledMessage.start()
 });
 
 client.on('presenceUpdate', async (oldPresence, newPresence) => {
@@ -131,54 +154,51 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
     const guild = client.guilds.cache.get('797845913774981181');
     const channel = guild.channels.cache.get('797845914324041769');
 
-    if (oldPresence.status === 'offline' && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-      let string = [];
+      if ((!oldPresence.status || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+        let string = [];
+        if (newPresence.userId === '716185747023069215') {
+          string = [
+            `Welcome back panther <@${newPresence.userId}> `,
+          ];
+          const randomIndex = Math.floor(Math.random() * string.length);
+          const randomString = string[randomIndex];
+          channel.send(randomString);
+        } else if (newPresence.userId === '356250974647746562') {
+          string = `Welcome back my dear boss <@${newPresence.userId}> `
+          channel.send(string);
+        } else {
+          const string = [
+            `Welcome back <@${newPresence.userId}>`,
+            `Hello <@${newPresence.userId}> bro`,
+          ];
+          const randomIndex = Math.floor(Math.random() * string.length);
+          const randomString = string[randomIndex];
+          channel.send(randomString);
+        }
+      }
+
+    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities !== 'Custom Status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
+      let string2 = [];
       if (newPresence.userId === '716185747023069215') {
-        string = [
-          `Welcome back panther <@${newPresence.userId}> `,
+        string2 = [
+          `Thank you for your advise <@${newPresence.userId}>, wish you have fun with ${newPresence.activities}`,
         ];
-        const randomIndex = Math.floor(Math.random() * string.length);
-        const randomString = string[randomIndex];
+        const randomIndex = Math.floor(Math.random() * string2.length);
+        const randomString = string2[randomIndex];
         channel.send(randomString);
       } else if (newPresence.userId === '356250974647746562') {
-        string = `Welcome back my dear boss <@${newPresence.userId}> `
+        string = `Wish you have fun with ${newPresence.activities} my boss <@${newPresence.userId}> `
         channel.send(string);
       } else {
-        const string = [
-          `Welcome back <@${newPresence.userId}>`,
-          `Hello <@${newPresence.userId}> bro`,
+        string2 = [
+          `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
+          `<@${newPresence.userId}> cho chơi với`,
         ];
-        const randomIndex = Math.floor(Math.random() * string.length);
-        const randomString = string[randomIndex];
+        const randomIndex = Math.floor(Math.random() * string2.length);
+        const randomString = string2[randomIndex];
         channel.send(randomString);
       }
     }
-
-    // if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities !== 'Custom Status' && oldPresence.activities !== newPresence.activities) {
-    //   let string2 = [];
-    //   if (newPresence.userId === '716185747023069215') {
-    //     string2 = [
-    //       `<@${newPresence.userId}> đi nấu cơm đi`,
-    //       `<@${newPresence.userId}> đi phơi quần áo đi`,
-    //       `<@${newPresence.userId}> đi quét nhà đi`,
-    //       `<@${newPresence.userId}> đi học bài đi`,
-    //     ];
-    //     const randomIndex = Math.floor(Math.random() * string2.length);
-    //     const randomString = string2[randomIndex];
-    //     channel.send(randomString);
-    //   } else if (newPresence.userId === '356250974647746562'){
-    //     string = `Wish you have fun my dear boss <@${newPresence.userId}> `
-    //     channel.send(string);
-    //   } else {
-    //     string2 = [
-    //       `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
-    //       `<@${newPresence.userId}> cho chơi với`,
-    //     ];
-    //     const randomIndex = Math.floor(Math.random() * string2.length);
-    //     const randomString = string2[randomIndex];
-    //     channel.send(randomString);
-    //   }
-    // }
 
   } catch (error) {
     console.log(error);
