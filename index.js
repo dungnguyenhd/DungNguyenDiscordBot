@@ -166,7 +166,7 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
           const string = [
             `Welcome back <@${newPresence.userId}>, have a nice day`,
             `Hi <@${newPresence.userId}>, how are you doing today?`,
-            `<@${newPresence.userId}>! go to see you!`,
+            `<@${newPresence.userId}> good to see you!`,
             `Bonjour <@${newPresence.userId}>`,
             `<@${newPresence.userId}> konnichiwa `,
             `Ahoy <@${newPresence.userId}>, matey! Avast ye! `,
