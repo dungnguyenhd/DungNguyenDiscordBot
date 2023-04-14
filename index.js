@@ -159,11 +159,10 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
         if (newPresence.userId === '356250974647746562') {
           string = `Welcome back my dear boss <@${newPresence.userId}> `
           channel.send(string);
-        } else if (newPresence.userId = '797864861987766294') {
+        } else if (newPresence.userId === '797864861987766294') {
           string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
           channel.send(string);
-        }
-         else {
+        } else {
           const string = [
             `Welcome back <@${newPresence.userId}>, have a nice day`,
             `Hi <@${newPresence.userId}>, how are you doing today?`,
@@ -183,7 +182,7 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
         }
       }
 
-    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
+    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
       let string2 = [];
       if (newPresence.userId === '716185747023069215') {
         string2 = [
