@@ -130,7 +130,7 @@ client.once("ready", () => {
     });
   }, 10 * 10000);
 
-  let scheduledMessage = new cron.CronJob('00 00 16 * * *', () => {
+  let scheduledMessage = new cron.CronJob('00 35 09 * * *', () => {
     let now = new Date().getTime();
     let countDownDate = new Date("Feb 2,2025 5:00:00").getTime();
     let timeleft = countDownDate - now;
