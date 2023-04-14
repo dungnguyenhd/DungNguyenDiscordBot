@@ -197,15 +197,16 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       }  else if (newPresence.userId === '1087051193844498564') {
         string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
         channel.send(string);
-      } else {
-        string2 = [
-          `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
-          `<@${newPresence.userId}> cho chơi với`,
-        ];
-        const randomIndex = Math.floor(Math.random() * string2.length);
-        const randomString = string2[randomIndex];
-        channel.send(randomString);
-      }
+      } 
+      // else {
+      //   string2 = [
+      //     `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
+      //     `<@${newPresence.userId}> cho chơi với`,
+      //   ];
+      //   const randomIndex = Math.floor(Math.random() * string2.length);
+      //   const randomString = string2[randomIndex];
+      //   channel.send(randomString);
+      // }
     }
   } catch (error) {
     console.log(error);
