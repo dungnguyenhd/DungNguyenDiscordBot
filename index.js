@@ -186,13 +186,16 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       let string2 = [];
       if (newPresence.userId === '716185747023069215') {
         string2 = [
-          `Thank you for your contribute <@${newPresence.userId}>, wish you have fun with ${newPresence.activities}`,
+          `Your contribute pass is expired <@${newPresence.userId}>, pay 2 dinners or 2 times washing dishes to continue`,
         ];
         const randomIndex = Math.floor(Math.random() * string2.length);
         const randomString = string2[randomIndex];
         channel.send(randomString);
       } else if (newPresence.userId === '356250974647746562') {
         string = `Wish you have fun with ${newPresence.activities} my boss <@${newPresence.userId}> `
+        channel.send(string);
+      }  else if (newPresence.userId === '1087051193844498564') {
+        string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
         channel.send(string);
       } else {
         string2 = [
