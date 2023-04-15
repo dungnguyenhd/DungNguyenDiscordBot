@@ -1,6 +1,6 @@
 # fly.toml file generated for vivycuadung on 2023-04-14T15:39:01+07:00
 
-app = "vivycuadung"
+app = "vivyofngt"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "hkg"
