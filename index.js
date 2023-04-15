@@ -153,7 +153,7 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
   try {
     const guild = client.guilds.cache.get('797845913774981181');
     const channel = guild.channels.cache.get('797845914324041769');
-
+ 
     if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
       let string;
       if (newPresence.userId === '356250974647746562') {
