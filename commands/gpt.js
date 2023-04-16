@@ -24,16 +24,19 @@ module.exports = {
         url: 'https://openai80.p.rapidapi.com/chat/completions',
         headers: {
           'content-type': 'application/json',
-          'X-RapidAPI-Key': '4aaa27d4c0mshb8183cf05fa5e3ap1d73b9jsn2a8de64c111a',
+          'X-RapidAPI-Key': '45a2178c6cmsha56a5ccd3e26dfep1cd67ajsn8891d90c6f0f',
           'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
         },
         data: data
       };
 
+      
+
       await message.channel.sendTyping();
 
       axios.request(config)
         .then((response) => {
+          console.log(response.data);
           response.data.choices.map((choice) => { return message.channel.send(choice.message.content); });
         })
         .catch((error) => {

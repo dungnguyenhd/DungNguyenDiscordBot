@@ -182,22 +182,22 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
         // }
       }
     }
-    if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
-      let string2 = [];
-      if (newPresence.userId === '716185747023069215') {
-        string2 = [
-          `Your contribute pass is expired <@${newPresence.userId}>, pay 2 dinners or 2 times washing dishes to continue`,
-        ];
-        const randomIndex = Math.floor(Math.random() * string2.length);
-        const randomString = string2[randomIndex];
-        channel.send(randomString);
-      } else if (newPresence.userId === '356250974647746562') {
-        string = `Wish you have fun with ${newPresence.activities} my boss <@${newPresence.userId}> `
-        channel.send(string);
-      }  else if (newPresence.userId === '1087051193844498564') {
-        string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
-        channel.send(string);
-      } 
+    // if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
+      // let string2 = [];
+      // if (newPresence.userId === '716185747023069215') {
+      //   string2 = [
+      //     `Your contribute pass is expired <@${newPresence.userId}>, pay 2 dinners or 2 times washing dishes to continue`,
+      //   ];
+      //   const randomIndex = Math.floor(Math.random() * string2.length);
+      //   const randomString = string2[randomIndex];
+      //   channel.send(randomString);
+      // } else if (newPresence.userId === '356250974647746562') {
+      //   string = `Wish you have fun with ${newPresence.activities} my boss <@${newPresence.userId}> `
+      //   channel.send(string);
+      // }  else if (newPresence.userId === '1087051193844498564') {
+      //   string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
+      //   channel.send(string);
+      // } 
       // else {
       //   string2 = [
       //     `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
@@ -207,7 +207,7 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       //   const randomString = string2[randomIndex];
       //   channel.send(randomString);
       // }
-    }
+    // }
   } catch (error) {
     console.log(error);
   }
