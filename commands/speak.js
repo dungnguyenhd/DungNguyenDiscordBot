@@ -4,6 +4,7 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 
 module.exports = {
   name: 'speak',
+  aliases: ['s', 'sp'],
   inVoiceChannel: true,
   run: async (client, message, args) => {
     const string = args.join(' ');
