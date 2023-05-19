@@ -149,19 +149,19 @@ client.once("ready", () => {
   scheduledMessage.start()
 });
 
-client.on('presenceUpdate', async (oldPresence, newPresence) => {
-  try {
-    const guild = client.guilds.cache.get('797845913774981181');
-    const channel = guild.channels.cache.get('797845914324041769');
- 
-    if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-      let string;
-      if (newPresence.userId === '356250974647746562') {
-        string = `Welcome back my dear boss <@${newPresence.userId}> `
-        channel.send(string);
-      } else if (newPresence.userId === '797864861987766294') {
-        string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
-        channel.send(string);
+// client.on('presenceUpdate', async (oldPresence, newPresence) => {
+//   try {
+//     const guild = client.guilds.cache.get('797845913774981181');
+//     const channel = guild.channels.cache.get('797845914324041769');
+
+    // if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+    //   let string;
+    //   if (newPresence.userId === '356250974647746562') {
+    //     string = `Welcome back my dear boss <@${newPresence.userId}> `
+    //     channel.send(string);
+    //   } else if (newPresence.userId === '797864861987766294') {
+    //     string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
+    //     channel.send(string);
         // } else {
         //   const string = [
         //     `Welcome back <@${newPresence.userId}>, have a nice day`,
@@ -180,8 +180,8 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
         //   const randomString = string[randomIndex];
         //   channel.send(randomString);
         // }
-      }
-    }
+    //   }
+    // }
     // if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
       // let string2 = [];
       // if (newPresence.userId === '716185747023069215') {
@@ -197,7 +197,7 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       // }  else if (newPresence.userId === '1087051193844498564') {
       //   string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
       //   channel.send(string);
-      // } 
+      // }
       // else {
       //   string2 = [
       //     `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
@@ -208,10 +208,10 @@ client.on('presenceUpdate', async (oldPresence, newPresence) => {
       //   channel.send(randomString);
       // }
     // }
-  } catch (error) {
-    console.log(error);
-  }
-});
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 
 client.on('messageCreate', async message => {
