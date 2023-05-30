@@ -24,13 +24,13 @@ module.exports = {
         url: 'https://openai80.p.rapidapi.com/chat/completions',
         headers: {
           'content-type': 'application/json',
-          'X-RapidAPI-Key': '45a2178c6cmsha56a5ccd3e26dfep1cd67ajsn8891d90c6f0f',
+          'X-RapidAPI-Key': '29996176f3msh3a1d6c21c502755p155bd8jsn346846a0c0a6',
           'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
         },
         data: data
       };
 
-      
+
 
       await message.channel.sendTyping();
 

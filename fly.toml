@@ -1,9 +1,9 @@
-# fly.toml file generated for vivycuadung on 2023-04-14T15:39:01+07:00
+# fly.toml file generated for vivyver4 on 2023-05-23T09:59:44+07:00
 
-app = "vivyofngt"
+app = "vivyver4"
 kill_signal = "SIGINT"
 kill_timeout = 5
-primary_region = "hkg"
+primary_region = "sin"
 
 [env]
   PORT = "8080"
