@@ -11,7 +11,7 @@ module.exports = {
 
       const headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Authorization': 'Bearer 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'
       }
       const requestBody = {
         "model": "gpt-3.5-turbo",
