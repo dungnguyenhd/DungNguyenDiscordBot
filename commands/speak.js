@@ -13,12 +13,6 @@ module.exports = {
       return message.reply('You need to join a voice channel first!');
     }
 
-    const connection = joinVoiceChannel({
-      channelId: message.member.voice.channel.id,
-      guildId: message.member.voice.channel.guild.id,
-      adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
-    });
-
     const audioURL = getAudioUrl(string, {
       lang: 'vi',
       slow: false,
@@ -26,11 +20,18 @@ module.exports = {
       timeout: 10000,
     });
 
-    const player = createAudioPlayer();
-    const resource = createAudioResource(audioURL);
-    player.play(resource);
-
-    // Subscribe the connection to the audio player (will play audio on the voice connection)
-    connection.subscribe(player);
+    try {
+      const connection = joinVoiceChannel({
+        channelId: message.member.voice.channel.id,
+        guildId: message.member.voice.channel.guild.id,
+        adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
+      });
+      const player = createAudioPlayer();
+      const resource = createAudioResource(audioURL);
+      player.play(resource);
+      connection.subscribe(player);
+    } catch (err) {
+      message.channel.send(err);
+    }
   },
 }

@@ -149,69 +149,39 @@ client.once("ready", () => {
   scheduledMessage.start()
 });
 
-// client.on('presenceUpdate', async (oldPresence, newPresence) => {
-//   try {
-//     const guild = client.guilds.cache.get('797845913774981181');
-//     const channel = guild.channels.cache.get('797845914324041769');
+client.on('presenceUpdate', async (oldPresence, newPresence) => {
+  try {
+    let now = new Date().getTime();
+    let countDownDate = new Date("Feb 2,2025 5:00:00").getTime();
+    let timeleft = countDownDate - now;
 
-    // if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-    //   let string;
-    //   if (newPresence.userId === '356250974647746562') {
-    //     string = `Welcome back my dear boss <@${newPresence.userId}> `
-    //     channel.send(string);
-    //   } else if (newPresence.userId === '797864861987766294') {
-    //     string = `Oh no, look who it is <@${newPresence.userId}>, my boss miss you so much!`
-    //     channel.send(string);
-        // } else {
-        //   const string = [
-        //     `Welcome back <@${newPresence.userId}>, have a nice day`,
-        //     `Hi <@${newPresence.userId}>, how are you doing today?`,
-        //     `<@${newPresence.userId}> good to see you!`,
-        //     `Bonjour <@${newPresence.userId}>`,
-        //     `<@${newPresence.userId}> konnichiwa `,
-        //     `Ahoy <@${newPresence.userId}>, matey! Avast ye! `,
-        //     `Waddup Brah <@${newPresence.userId}>? Welcome!`,
-        //     `Hola!!! <@${newPresence.userId}>`,
-        //     `Privyet <@${newPresence.userId}>`,
-        //     `Namaste <@${newPresence.userId}>`,
-        //     `<@${newPresence.userId}> Sawatdee khrap`
-        //   ];
-        //   const randomIndex = Math.floor(Math.random() * string.length);
-        //   const randomString = string[randomIndex];
-        //   channel.send(randomString);
-        // }
-    //   }
-    // }
-    // if (newPresence.activities.length !== 0 && newPresence.userId !== '951496858323267614' && newPresence.activities.toString().toLowerCase() !== 'custom status' && oldPresence.activities !== newPresence.activities && oldPresence.activities.length === 0 && newPresence.activities.length !== 0) {
-      // let string2 = [];
-      // if (newPresence.userId === '716185747023069215') {
-      //   string2 = [
-      //     `Your contribute pass is expired <@${newPresence.userId}>, pay 2 dinners or 2 times washing dishes to continue`,
-      //   ];
-      //   const randomIndex = Math.floor(Math.random() * string2.length);
-      //   const randomString = string2[randomIndex];
-      //   channel.send(randomString);
-      // } else if (newPresence.userId === '356250974647746562') {
-      //   string = `Wish you have fun with ${newPresence.activities} my boss <@${newPresence.userId}> `
-      //   channel.send(string);
-      // }  else if (newPresence.userId === '1087051193844498564') {
-      //   string = `Con gà <@${newPresence.userId}> cho xin cái tuổi`
-      //   channel.send(string);
-      // }
-      // else {
-      //   string2 = [
-      //     `<@${newPresence.userId}> đang chơi ${newPresence.activities}`,
-      //     `<@${newPresence.userId}> cho chơi với`,
-      //   ];
-      //   const randomIndex = Math.floor(Math.random() * string2.length);
-      //   const randomString = string2[randomIndex];
-      //   channel.send(randomString);
-      // }
-    // }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+    const guild = client.guilds.cache.get('797845913774981181');
+    const channel = guild.channels.cache.get('797845914324041769');
+
+    if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+      if (newPresence.userId === '797864861987766294') {
+          const string = [
+            `Chào Linh nhá`,
+            `<@${newPresence.userId}> good to see you!`,
+            `Cyka blyat <@${newPresence.userId}>`,
+            `Daijoubu <@${newPresence.userId}>`,
+            `Cố lên Linh ơi, còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây nữa thôi`,
+          ];
+          const randomIndex = Math.floor(Math.random() * string.length);
+          const randomString = string[randomIndex];
+        channel.send(randomString);
+      }
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+});
 
 
 client.on('messageCreate', async message => {
@@ -263,20 +233,4 @@ client.distube
     message.channel.send(`${client.emotes.error} Không tìm thấy kết quả \`${query}\`!`)
   )
   .on('finish', queue => queue.textChannel.send('Hết !'))
-// // DisTubeOptions.searchSongs = true
-// .on("searchResult", (message, result) => {
-//     let i = 0
-//     message.channel.send(
-//         `**Choose an option from below**\n${result
-//             .map(song => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``)
-//             .join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`
-//     )
-// })
-// .on("searchCancel", message => message.channel.send(`${client.emotes.error} | Searching canceled`))
-// .on("searchInvalidAnswer", message =>
-//     message.channel.send(
-//         `${client.emotes.error} | Invalid answer! You have to enter the number in the range of the results`
-//     )
-// )
-// .on("searchDone", () => {})
 client.login(process.env.TOKEN)

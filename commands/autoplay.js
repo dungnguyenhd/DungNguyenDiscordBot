@@ -1,5 +1,5 @@
 // module.exports = {
-//   name: 'chui',
+//   name: 's',
 //   aliases: ['c'],
 //   inVoiceChannel: true,
 //   run: async (client, message, args) => {

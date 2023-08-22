@@ -1,6 +1,6 @@
 module.exports = {
   name: 'ask',
-  aliases: ['chat'],
+  aliases: ['chat, vivy'],
   run: async (client, message, args) => {
     const string = args.join(' ')
     if (!string) return message.channel.send(`${client.emotes.error} | Vui lòng nhập từ khóa tìm kiếm.`)
@@ -10,23 +10,23 @@ module.exports = {
       const axios = require('axios');
 
       const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': 'a2a54a3203msh9c44dd7f554da86p1d230bjsn4187c62b271a',
+        'X-RapidAPI-Host': 'simple-chatgpt-api.p.rapidapi.com'
       }
       const requestBody = {
-        "model": "gpt-3.5-turbo",
-        "messages": [{ "role": "user", "content": string }]
+        "question": string
       }
 
       await message.channel.sendTyping();
 
       try {
-        const response = await axios.post('https://api.openai.com/v1/chat/completions', requestBody, { headers });
-        const answer = response.data.choices[0].message.content;
+        const response = await axios.post('https://simple-chatgpt-api.p.rapidapi.com/ask', requestBody, { headers });
+        const answer = response.data.answer;
         message.channel.send(answer);
       } catch (error) {
-        console.log(error.response.data);
-        message.channel.send(error.response.data.error.message);
+        console.log(error.response);
+        message.channel.send(error.response);
       }
     }
   }
