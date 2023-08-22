@@ -20,18 +20,14 @@ module.exports = {
       timeout: 10000,
     });
 
-    try {
-      const connection = joinVoiceChannel({
-        channelId: message.member.voice.channel.id,
-        guildId: message.member.voice.channel.guild.id,
-        adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
-      });
-      const player = createAudioPlayer();
-      const resource = createAudioResource(audioURL);
-      player.play(resource);
-      connection.subscribe(player);
-    } catch (err) {
-      message.channel.send(err);
-    }
+    const connection = joinVoiceChannel({
+      channelId: message.member.voice.channel.id,
+      guildId: message.member.voice.channel.guild.id,
+      adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
+    });
+    const player = createAudioPlayer();
+    const resource = createAudioResource(audioURL);
+    player.play(resource);
+    connection.subscribe(player);
   },
 }
