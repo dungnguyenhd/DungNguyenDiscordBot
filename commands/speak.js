@@ -20,8 +20,6 @@ module.exports = {
       timeout: 10000,
     });
 
-    console.log(audioURL);
-
     const connection = joinVoiceChannel({
       channelId: message.member.voice.channel.id,
       guildId: message.member.voice.channel.guild.id,

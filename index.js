@@ -149,40 +149,26 @@ client.once("ready", () => {
   scheduledMessage.start()
 });
 
-client.on('presenceUpdate', async (oldPresence, newPresence) => {
-  try {
-    let now = new Date().getTime();
-    let countDownDate = new Date("Feb 2,2025 5:00:00").getTime();
-    let timeleft = countDownDate - now;
-
-    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-
-    const guild = client.guilds.cache.get('797845913774981181');
-    const channel = guild.channels.cache.get('797845914324041769');
-
-    if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
-      if (newPresence.userId === '797864861987766294') {
-          const string = [
-            `Chào Linh nhá`,
-            `<@${newPresence.userId}> good to see you!`,
-            `Cyka blyat <@${newPresence.userId}>`,
-            `Daijoubu <@${newPresence.userId}>`,
-            `Cố lên Linh ơi, còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây nữa thôi`,
-          ];
-          const randomIndex = Math.floor(Math.random() * string.length);
-          const randomString = string[randomIndex];
-        channel.send(randomString);
-      }
-    }
-  }
-  catch (error) {
-    console.log(error);
-  }
-});
-
+// client.on('presenceUpdate', async (oldPresence, newPresence) => {
+//   try {
+//     if ((!oldPresence || oldPresence.status === 'offline') && newPresence.status === 'online' && newPresence.userId !== '951496858323267614') {
+//       if (newPresence.userId === '797864861987766294') {
+//           const string = [
+//             `Chào Linh nhá`,
+//             `<@${newPresence.userId}> good to see you!`,
+//             `Cyka blyat <@${newPresence.userId}>`,
+//             `Daijoubu <@${newPresence.userId}>`,
+//           ];
+//           const randomIndex = Math.floor(Math.random() * string.length);
+//           const randomString = string[randomIndex];
+//         channel.send(randomString);
+//       }
+//     }
+//   }
+//   catch (error) {
+//     console.log(error);
+//   }
+// });
 
 client.on('messageCreate', async message => {
   if (message.author.bot || !message.guild) return
